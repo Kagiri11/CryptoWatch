@@ -6,15 +6,20 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
+
 
     -------canvas colors----------
-    <color name="primaryColor">#020309</color>
+    <color name="primaryColor">#0F1952</color>
     <color name="gradientFirstColor">#35118C</color>
     <color name="gradientSecondColor">#620E9D</color>
     <color name="gradientThirdColor">#90176C</color>
+    <color name="red">#E21F1F</color>
+    <color name="green">#3DDC84</color>
 
     -------text colors--------
-
+    <color name="textPrimaryColor">#FFFFFFFF</color>
+    <color name="textPrimaryColorAlt">#111634</color>
+    <color name="textSecondary">#B2A7B8</color>
 
 </resources>
