@@ -1,3 +1,5 @@
 package com.example.cryptowatch.models
 
-class Coins : ArrayList<CoinItem>()
+data class Coins(
+    val coins: List<CoinItem>
+) : ArrayList<CoinItem>()
