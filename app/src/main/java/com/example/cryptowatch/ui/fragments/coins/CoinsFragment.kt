@@ -1,6 +1,7 @@
 package com.example.cryptowatch.ui.fragments.coins
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,12 +31,12 @@ class CoinsFragment : Fragment() {
         viewModelFactory = CoinsViewModelFactory(repository,application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(CoinsViewModel::class.java)
 
-        viewModel.coins.observe(viewLifecycleOwner, {response->
-            when(response){
-                is Resource.Success ->response.data?.let{coins->
-                    coinsAdapter.differ.submitList(coins)
-                }
-            }
+        viewModel.coins.observe(viewLifecycleOwner, {respons->
+
+            coinsAdapter.differ.submitList(respons.body())
+            val singleCoin = respons.body()!!.random()
+                binding.rvCoins.adapter=coinsAdapter
+                binding.tvApp1.text=singleCoin.name
 
         })
 

@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/app_nav">
+    android:id="@+id/app_nav"
+    app:startDestination="@id/coinsFragment">
 
+    <fragment
+        android:id="@+id/coinsFragment"
+        android:name="com.example.cryptowatch.ui.fragments.coins.CoinsFragment"
+        android:label="CoinsFragment" >
+        <action
+            android:id="@+id/action_coinsFragment_to_coinDetailsFragment"
+            app:destination="@id/coinDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coinDetailsFragment"
+        android:name="com.example.cryptowatch.ui.fragments.coinDetails.CoinDetailsFragment"
+        android:label="CoinDetailsFragment" />
 </navigation>

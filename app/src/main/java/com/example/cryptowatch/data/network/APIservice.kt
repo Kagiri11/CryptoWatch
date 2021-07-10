@@ -1,5 +1,6 @@
 package com.example.cryptowatch.data.network
 
+import com.example.cryptowatch.models.CoinItem
 import com.example.cryptowatch.models.Coins
 import retrofit2.Response
 import retrofit2.http.GET
@@ -12,5 +13,5 @@ interface APIService {
         @Query("order")order:String="market_cap_desc",
         @Query("per_page")perPage : Int=50,
         @Query("page")page:Int=1
-        ):Response<Coins>
+        ):Response<List<CoinItem>>
 }

@@ -11,10 +11,12 @@ import com.bumptech.glide.Glide
 import com.example.cryptowatch.R
 import com.example.cryptowatch.databinding.CoinItemBinding
 import com.example.cryptowatch.models.CoinItem
+import com.example.cryptowatch.models.Coins
 import kotlinx.android.synthetic.main.coin_item.view.*
+import kotlin.math.roundToInt
 
 class CoinsAdapter :RecyclerView.Adapter<CoinsAdapter.ViewHolder>() {
-    class ViewHolder(private val binding: CoinItemBinding):RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(binding: CoinItemBinding):RecyclerView.ViewHolder(binding.root)
 
     private val differCallBack = object : DiffUtil.ItemCallback<CoinItem>(){
         override fun areItemsTheSame(oldItem: CoinItem, newItem: CoinItem): Boolean {
@@ -36,11 +38,15 @@ class CoinsAdapter :RecyclerView.Adapter<CoinsAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val coin = differ.currentList[position]
+        val coin= differ.currentList[position]
         holder.itemView.apply {
             tv_rv_coin_abbr.text=coin.symbol
             tv_rv_coin_name.text=coin.name
+            val priceChange = coin.price_change_24h
+            val x = String.format("%.2f", priceChange)
+            val newPrice = "%.2f".format(priceChange).toDouble()
             tv_rv_coin_price.text="$${coin.current_price}"
+            tv_coin_price_change.text= x
             Glide.with(this).load(coin.image).into(iv_rv_coin_image)
         }
     }
