@@ -1,5 +1,6 @@
 package com.example.cryptowatch.ui.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -45,6 +46,9 @@ class CoinsAdapter :RecyclerView.Adapter<CoinsAdapter.ViewHolder>() {
             val priceChange = coin.price_change_24h
             val x = String.format("%.2f", priceChange)
             val newPrice = "%.2f".format(priceChange).toDouble()
+            if(priceChange>0){
+                tv_coin_price_change.setTextColor(resources.getColor(R.color.green))
+            }else tv_coin_price_change.setTextColor(resources.getColor(R.color.red))
             tv_rv_coin_price.text="$${coin.current_price}"
             tv_coin_price_change.text= x
             Glide.with(this).load(coin.image).into(iv_rv_coin_image)
