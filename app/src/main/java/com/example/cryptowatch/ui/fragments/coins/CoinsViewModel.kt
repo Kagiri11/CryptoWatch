@@ -9,6 +9,7 @@ import com.example.cryptowatch.models.CoinItem
 import com.example.cryptowatch.models.Coins
 import com.example.cryptowatch.repositories.MainRepository
 import com.example.cryptowatch.utils.Resource
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
@@ -21,7 +22,8 @@ class CoinsViewModel(private val repository: MainRepository, application: Applic
         fetchCoinMarketData()
     }
 
-    private fun fetchCoinMarketData() = viewModelScope.launch {
+     fun fetchCoinMarketData() = viewModelScope.launch {
+        delay(5000)
         val result=repository.fetchCoinMarketData()
         _coins.value= result
     }

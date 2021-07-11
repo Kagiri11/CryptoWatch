@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/tv_rv_coin_name"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:fontFamily="@font/poppins"
@@ -58,6 +58,7 @@
             android:id="@+id/chart_rv_coin"
             android:layout_width="100dp"
             android:layout_height="80dp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginEnd="70dp"
             app:layout_constraintEnd_toEndOf="parent"

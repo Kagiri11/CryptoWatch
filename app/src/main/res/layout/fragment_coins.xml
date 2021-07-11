@@ -13,18 +13,43 @@
         android:background="@color/primaryColor"
         tools:context=".ui.fragments.coins.CoinsFragment">
 
-        <TextView
-            android:id="@+id/tv_app1"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="CRYPTOWATCH"
-            android:textColor="@color/textPrimaryColor"
-            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_app1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="0dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="CRYPTO"
+                android:textColor="@color/textPrimaryColor"
+                android:textSize="25sp"
+                android:gravity="end"
+                app:layout_constraintEnd_toStartOf="@+id/tv_app2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_app2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="WATCH"
+                android:gravity="start"
+                android:textColor="@color/textSecondary"
+                android:textSize="25sp"
+                app:layout_constraintStart_toEndOf="@+id/tv_app1"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <!--region Top Single Coin-->
         <com.google.android.material.card.MaterialCardView
@@ -37,7 +62,7 @@
 
             app:cardCornerRadius="20dp"
             app:cardElevation="70dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_app1">
+            app:layout_constraintTop_toBottomOf="@id/layout1">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
@@ -58,6 +83,11 @@
                     android:src="@mipmap/ic_launcher"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_coin_abbr" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="1" />
 
                 <TextView
                     android:id="@+id/tv_coin_abbr"
@@ -114,6 +144,7 @@
                     android:id="@+id/chart_coin_chart"
                     android:layout_width="100dp"
                     android:layout_height="60dp"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@id/tv_coin_price"
                     app:layout_constraintTop_toBottomOf="@+id/tv_coin_price" />
@@ -141,13 +172,13 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_coins"
                     android:layout_width="match_parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:listitem="@layout/coin_item"
+                    android:layout_height="match_parent"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:layout_height="match_parent" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/coin_item" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
