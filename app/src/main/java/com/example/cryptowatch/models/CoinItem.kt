@@ -28,5 +28,5 @@ data class CoinItem(
     val roi: Roi?=null,
     val symbol: String,
     val total_supply: Double,
-    val total_volume: Long
+    val total_volume: Double
 ):Serializable
