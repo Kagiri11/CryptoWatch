@@ -27,7 +27,7 @@ class CoinDetailsFragment : Fragment() {
         binding.tvCoinName.text=coin.name
         binding.tvCoinPrice.text="$ ${coin.current_price}"
         val change = coin.price_change_24h
-        if (change > 0) {
+        if(change > 0) {
             binding.ivCoinPriceDirection.setImageResource(R.drawable.ic_price_up)
         } else if (change < 0) {
             binding.ivCoinPriceDirection.setImageResource(R.drawable.ic_price_down)
