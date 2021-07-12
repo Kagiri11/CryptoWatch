@@ -7,12 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.cryptowatch.R
 import com.example.cryptowatch.databinding.FragmentCoinDetailsBinding
+import com.example.cryptowatch.repositories.MainRepository
 
 class CoinDetailsFragment : Fragment() {
+    lateinit var viewModel : CoinDetailsVM
+    lateinit var viewModelFactory : CoinDetailsVMFactory
     private val args : CoinDetailsFragmentArgs by navArgs()
 
     @SuppressLint("SetTextI18n")
@@ -22,6 +26,12 @@ class CoinDetailsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding : FragmentCoinDetailsBinding=DataBindingUtil.inflate(inflater,R.layout.fragment_coin_details,container,false)
+
+        val repository = MainRepository()
+        val application = requireNotNull(this.activity).application
+        viewModelFactory = CoinDetailsVMFactory(repository,application)
+        viewModel=ViewModelProvider(this,viewModelFactory).get(CoinDetailsVM::class.java)
+
         val coin = args.coin
         Glide.with(requireActivity()).load(coin.image).into(binding.ivCoinSymbol)
         binding.tvCoinName.text=coin.name
