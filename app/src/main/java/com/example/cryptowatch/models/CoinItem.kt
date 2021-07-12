@@ -1,5 +1,7 @@
 package com.example.cryptowatch.models
 
+import java.io.Serializable
+
 data class CoinItem(
     val ath: Double,
     val ath_change_percentage: Double,
@@ -27,4 +29,4 @@ data class CoinItem(
     val symbol: String,
     val total_supply: Double,
     val total_volume: Long
-)
+):Serializable

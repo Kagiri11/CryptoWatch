@@ -15,5 +15,9 @@
     <fragment
         android:id="@+id/coinDetailsFragment"
         android:name="com.example.cryptowatch.ui.fragments.coinDetails.CoinDetailsFragment"
-        android:label="CoinDetailsFragment" />
+        android:label="CoinDetailsFragment" >
+        <argument
+            android:name="coin"
+            app:argType="com.example.cryptowatch.models.CoinItem" />
+    </fragment>
 </navigation>

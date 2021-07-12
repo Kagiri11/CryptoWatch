@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.cryptowatch.R
 import com.example.cryptowatch.databinding.FragmentCoinsBinding
@@ -29,7 +30,12 @@ class CoinsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_coins, container, false)
-
+        coinsAdapter.setOnCoinClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("coin",it)
+            }
+            findNavController().navigate(R.id.action_coinsFragment_to_coinDetailsFragment,bundle)
+        }
         val repository = MainRepository()
         val application = requireNotNull(this.activity).application
         viewModelFactory = CoinsViewModelFactory(repository, application)

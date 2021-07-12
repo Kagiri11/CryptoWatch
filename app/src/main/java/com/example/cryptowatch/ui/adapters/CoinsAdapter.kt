@@ -52,7 +52,18 @@ class CoinsAdapter :RecyclerView.Adapter<CoinsAdapter.ViewHolder>() {
             tv_rv_coin_price.text="$${coin.current_price}"
             tv_coin_price_change.text= x
             Glide.with(this).load(coin.image).into(iv_rv_coin_image)
+            setOnClickListener {
+                onItemClickListener?.let {
+                    it(coin)
+                }
+            }
         }
+    }
+
+    private var onItemClickListener : ((CoinItem)-> Unit)?=null
+
+    fun setOnCoinClickListener(listener:(CoinItem)-> Unit){
+        onItemClickListener=listener
     }
 
     override fun getItemCount(): Int= differ.currentList.size
