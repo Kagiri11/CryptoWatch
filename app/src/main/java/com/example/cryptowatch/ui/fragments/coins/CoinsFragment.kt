@@ -60,7 +60,7 @@ class CoinsFragment : Fragment() {
     private fun fetchData() = lifecycleScope.launch {
         while (true) {
             viewModel.fetchCoinMarketData()
-            delay(5000)
+            delay(60000)
         }
     }
 
